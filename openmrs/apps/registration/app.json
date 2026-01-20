@@ -116,7 +116,7 @@
                 "customAttributes": {
                     "label": "Relative/Phone",
                     "placeholder": "Relative/phone/address",
-                    "fields": ["phoneNumber","alternatePhoneNumber","primaryContact","saphoneNumber","givenNameLocal","familyNameLocal","middleNameLocal","extraAddressInfo"]
+                    "fields": ["phoneNumber","alternatePhoneNumber","saphoneNumber","givenNameLocal","familyNameLocal","middleNameLocal","extraAddressInfo"]
                 }
             },
             "addressHierarchy": {

@@ -29,27 +29,6 @@
     "order": 3,
     "requiredPrivilege": "app:clinical"
   },
-   "registrationNew": {
-      "id": "bahmni.registration.new",
-      "extensionPointId": "org.bahmni.home.dashboard",
-      "type": "link",
-      "translationKey": "MODULE_LABEL_REGISTRATION_NEW_KEY",
-      "url": "/bahmni-new/registration/search",
-      "icon": "fa-user-plus",
-      "order": 4,
-      "requiredPrivilege": "app:registration"
-  },
-  "bahmniIpd": {
-    "id": "bahmni.ipd",
-    "extensionPointId": "org.bahmni.home.dashboard",
-    "type": "link",
-    "translationKey": "MODULE_LABEL_BED_MANAGEMENT_KEY",
-    "label": "InPatient",
-    "url": "../bedmanagement/#/home",
-    "icon": "fa-bed",
-    "order": 7,
-    "requiredPrivilege": "app:adt"
-  },
   "radiologyDocumentUpload": {
     "id": "bahmni.radiology.document.upload",
     "extensionPointId": "org.bahmni.home.dashboard",
@@ -99,16 +78,6 @@
     "icon": "icon-bahmni-reports",
     "order": 8,
     "requiredPrivilege": "app:reports"
-  },
-  "bahmniOT": {
-    "id": "bahmni.ot",
-    "extensionPointId": "org.bahmni.home.dashboard",
-    "type": "link",
-    "translationKey": "Operation Theatre",
-    "url": "../ot/",
-    "icon": "fa-hospital-o",
-    "order": 9,
-    "requiredPrivilege": "app:ot"
   }, 
   "implementerInterface": {
     "id": "bahmni.implementer.interface",

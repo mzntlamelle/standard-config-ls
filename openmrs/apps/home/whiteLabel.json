@@ -21,7 +21,7 @@
 			"link": "/bahmni/home"
 		},
 		{
-			"enabled": true,
+			"enabled": false,
 			"name": "openelis",
 			"title": "Laboratory",
 			"logo": "/bahmni/images/lab.png",
@@ -49,7 +49,7 @@
 			"link": "/bahmni-connect"
 		},
 		{
-			"enabled": true,
+			"enabled": false,
 			"name": "dcm",
 			"title": "Radiology",
 			"logo": "/bahmni/images/pac.png",
