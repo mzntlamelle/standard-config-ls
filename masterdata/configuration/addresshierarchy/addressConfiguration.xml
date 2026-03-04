@@ -3,7 +3,7 @@
   <addressComponents>
     <addressComponent>
       <field>STATE_PROVINCE</field>
-      <nameMapping>Country</nameMapping>
+      <nameMapping>State</nameMapping>
       <sizeMapping>40</sizeMapping>
       <requiredInHierarchy>false</requiredInHierarchy>
     </addressComponent>
@@ -15,7 +15,7 @@
     </addressComponent>
     <addressComponent>
       <field>POSTAL_CODE</field>
-      <nameMapping>Constituency</nameMapping>
+      <nameMapping>Pin Code</nameMapping>
       <sizeMapping>40</sizeMapping>
       <requiredInHierarchy>false</requiredInHierarchy>
     </addressComponent>
