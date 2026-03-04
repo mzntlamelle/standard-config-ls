@@ -1,11 +1,11 @@
 {
 	"homePage": {
 		"header_text": "<b>WELCOME TO<br />BAHMNI EMR & HOSPITAL SERVICE",
-		"logo": "/bahmni_config/openmrs/apps/home/logo.png",
+		"logo": "/bahmni_config/openmrs/apps/home/leslogo.png",
 		"title_text": " "
 	},
 	"loginPage": {
-		"logo": "/bahmni_config/openmrs/apps/home/logo.png",
+		"logo": "/bahmni_config/openmrs/apps/home/leslogo.png",
 		"showHeaderText": true,
 		"showTitleText": false
 	},
