@@ -31,13 +31,11 @@
                     "attributes": [
                         "primaryContact",
                         "saphoneNumber",
-                        "isUrban",
                         "email"
                     ]
                 },
                 "hidden": {
                     "attributes": [
-                        "isUrban"
                     ]
                 },
                 "defaults":  {
@@ -64,7 +62,7 @@
             "isLastNameMandatory": true,
             "patientNameDisplayOrder": ["firstName", "middleName", "lastName"],
             "showSaveConfirmDialog": false,
-            "showBirthTime": true,
+            "showBirthTime": false,
             "showEnterID":false,
             "showCasteSameAsLastNameCheckbox": false,
             "printOptions": [
@@ -116,7 +114,7 @@
                 "customAttributes": {
                     "label": "Relative/Phone",
                     "placeholder": "Relative/phone/address",
-                    "fields": ["phoneNumber","alternatePhoneNumber","saphoneNumber","givenNameLocal","familyNameLocal","middleNameLocal","extraAddressInfo"]
+                    "fields": ["phoneNumber","alternatePhoneNumber","saphoneNumber","givenNameLocal","familyNameLocal","middleNameLocal","extraAddressInfo", "nextOfKin"]
                 }
             },
             "addressHierarchy": {
