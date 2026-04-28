@@ -13,7 +13,7 @@
             "defaultIdentifierPrefix":{
                 "name": "defaultIdentifierPrefix",
                 "description": "Default identifier prefix used in search, create patient. eg. GAN",
-                "defaultValue": null
+                "defaultValue": "T8037"
             },
             "searchByIdForwardUrl":{
                 "name": "searchByIdForwardUrl",

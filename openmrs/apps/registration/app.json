@@ -59,8 +59,8 @@
             },
 
             "autoCompleteFields":["familyName", "caste"],
-            "defaultIdentifierPrefix": "GAN",
-            "defaultVisitType": "OPD",
+            "defaultIdentifierPrefix": "T8037",
+            "defaultVisitType": "ARV Drug Pickup",
             "searchByIdForwardUrl": "/patient/{{patientUuid}}",
             "showMiddleName": true,
             "showLastName": true,
@@ -93,11 +93,11 @@
             ],
             "conceptSetUI": {
                 "REGISTRATION FEES": {
-                    "required": true,
+                    "required": false,
                     "label": "Fee"
                 },
                 "FHS": {
-                    "buttonSelect": true
+                    "buttonSelect": false
                 },
                 "defaults":{
                     "FHS": "Present"
@@ -113,15 +113,31 @@
                 "cityVillage":{"pattern":"^[a-zA-Z0-9\\s,'\\-.\\/]{2,}", "errorMessage":"Only Alphanumerics and following special characters are allowed. Special characters - [ ,'-./]"}
             },
             "patientSearch": {
-                "customAttributes": {
-                    "label": "Phone Number",
-                    "placeholder": "Phone Number",
-                    "fields": ["phoneNumber","alternatePhoneNumber"]
-                }
+                "address": {
+                "label": "Village",
+                "placeholder": "Enter village name",
+                "field": "city_village"
             },
+            "customAttributes": {
+                "label": "Relative/Phone",
+                "placeholder": "Relative or phone number",
+                "fields": [
+                    "primaryRelative",
+                    "telephoneNumber",
+                    "primaryContact",
+                    "saphoneNumber",
+                    "givenNameLocal",
+                    "familyNameLocal",
+                    "middleNameLocal",
+                    "extraAddressInfo",
+                    "mothersMaidenSurname"
+                ]
+            },
+            "searchByPatientIdentifier": true,
             "addressHierarchy": {
                 "showAddressFieldsTopDown": false,
                 "strictAutocompleteFromLevel": "postalCode"
             }
         }
+    }
 }
