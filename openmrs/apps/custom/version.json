@@ -1,0 +1,10 @@
+{
+    "day" : "22",
+    "month" : "Apr",
+    "year" : "2026",
+    "releaseNotes": [
+        "Adding missing Bonolo Health Pickup locations",
+        "Adding Bonolo Health Pickup locations skip logic to hide locations base on district and Pickup type",
+        "Next Pickup date day dispensed auto calculation"
+    ]
+}
