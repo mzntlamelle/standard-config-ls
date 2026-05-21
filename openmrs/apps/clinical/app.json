@@ -601,6 +601,9 @@
 				"required": false,
 				"dropdown": true
 			},
+			"HIVTC, Adherence Medication":{
+				"dropdown":true
+			},
 			"HTC, Final HIV status": {
 				"required": false
 			},
