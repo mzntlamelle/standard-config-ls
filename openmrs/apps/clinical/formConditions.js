@@ -3355,6 +3355,9 @@ Bahmni.ConceptSet.FormConditions.rules = {
                                 conditions.assignedValues.push({ concept: 'HIVTC, Adherence Number of Days since refill', value: daysSinceRefill });
                                 conditions.disable.push('HIVTC, Adherence Number of Days since refill');
 
+                                // A, B, C, D together calculate pill count and adherence:
+                                // A = Total pills taken home | B = Pill count (remaining) | C = Daily ARV dose | D = Days since refill
+                                // Formula: ((A - B) / C / D) * 100 = % Adherence
                                 var adherence_A = formFieldValues['HIVTC, Adherence Total amount taken home'];
                                 var adherence_B = formFieldValues['HIVTC, Adherence Pill count'];
                                 var adherence_C = formFieldValues['HIVTC, Adherence Daily ARV Dose'];
@@ -3410,6 +3413,9 @@ Bahmni.ConceptSet.FormConditions.rules = {
                                 conditions.assignedValues.push({ concept: 'HIVTC, Adherence Number of Days since refill', value: daysSinceRefill });
                                 conditions.disable.push('HIVTC, Adherence Number of Days since refill');
 
+                                // A, B, C, D together calculate pill count and adherence:
+                                // A = Total pills taken home | B = Pill count (remaining) | C = Daily ARV dose | D = Days since refill
+                                // Formula: ((A - B) / C / D) * 100 = % Adherence
                                 var adherence_A = formFieldValues['HIVTC, Adherence Total amount taken home'];
                                 var adherence_B = formFieldValues['HIVTC, Adherence Pill count'];
                                 var adherence_C = formFieldValues['HIVTC, Adherence Daily ARV Dose'];
@@ -3418,7 +3424,10 @@ Bahmni.ConceptSet.FormConditions.rules = {
                                 console.log("[Adherence Calc] Inputs — A (total taken home):", adherence_A, "| B (pill count):", adherence_B, "| C (daily dose):", adherence_C, "| D (days since refill):", adherence_D);
 
                                 if (adherence_A && adherence_B && adherence_C && adherence_D) {
-                                        var percentageAdh = Math.floor(((adherence_A - adherence_B) / adherence_C / adherence_D) * 100);
+                                        var percentageAdh = Math.floor(((adherence_A - adherence_B) / (adherence_C) / (adherence_D)) * 100);
+
+                                        console.log(`now let's check percentageAdh: ${percentageAdh} %`)
+                                        console.log(`---%%%---`)
 
                                         console.log("[Adherence Calc] Percentage Adherence:", percentageAdh + "%");
 
