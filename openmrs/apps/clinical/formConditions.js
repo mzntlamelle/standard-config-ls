@@ -3466,6 +3466,8 @@ Bahmni.ConceptSet.FormConditions.rules = {
                         var dispensedDate = formFieldValues['HIVTC, Adherence Date ARVs Dispensed'];
                         var returnDate = formFieldValues['HIVTC, Adherence Return Date'];
 
+                        console.log(`${formName} chosen`);
+
                         if (dispensedDate && returnDate) {
                                 var daysSinceRefill = dateUtil.diffInDaysRegardlessOfTime(dispensedDate, returnDate);
 
