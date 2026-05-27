@@ -298,7 +298,12 @@
                 "displayOrder": 15,
                 "dashboardConfig": {
                     "title": null,
-                    "maximumNoOfVisits": 10
+                    "showTable":true,
+                    "showDetailsButton":true,
+                    "maximumNoOfVisits": 10,
+                    "conceptNames":[  
+                        "Regimen"
+                    ]
                 },
                 "formGroup": [ ],
                 "translationKey": "DASHBOARD_TITLE_FORMS_DISPLAY_CONTROL_KEY"
