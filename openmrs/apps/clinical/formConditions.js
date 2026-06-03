@@ -3385,6 +3385,13 @@ Bahmni.ConceptSet.FormConditions.rules = {
 
         //Working on the Adherence Calculator
         'HIVTC, Adherence Date ARVs Dispensed': window.buildAdherenceCalculatorConditions,
-        'HIVTC, Adherence Return Date': window.buildAdherenceCalculatorConditions
+        'HIVTC, Adherence Return Date': window.buildAdherenceCalculatorConditions,
+        // Also recalculate when the pill-count inputs (A/B/C) change, not just the dates
+        'HIVTC, Adherence Total amount taken home': window.buildAdherenceCalculatorConditions,
+        'HIVTC, Adherence Pill count': window.buildAdherenceCalculatorConditions,
+        'HIVTC, Adherence Daily ARV Dose': window.buildAdherenceCalculatorConditions,
+
+        //adherence calculator 2
+        'ART, Follow-up date': window.AdherenceCalculator2
 
 };

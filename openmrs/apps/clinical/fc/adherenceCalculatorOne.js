@@ -9,6 +9,8 @@ window.buildAdherenceCalculatorConditions = function (formName, formFieldValues)
                 var dateUtil = Bahmni.Common.Util.DateUtil;
                 var dispensedDate = formFieldValues['HIVTC, Adherence Date ARVs Dispensed'];
                 var returnDate = formFieldValues['HIVTC, Adherence Return Date'];
+                // var conditions = {  show: [], hide: [], assignedValues: [], disable: [], error: []};
+                // var retrospectiveDate = $.cookie(Bahmni.Common.Constants.retrospectiveEntryEncounterDateCookieName);
 
                 // conditions.disable.push("HIVTC, Adherence Number of Days since refill");
 
