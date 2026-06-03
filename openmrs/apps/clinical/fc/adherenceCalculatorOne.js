@@ -10,7 +10,7 @@ window.buildAdherenceCalculatorConditions = function (formName, formFieldValues)
                 var dispensedDate = formFieldValues['HIVTC, Adherence Date ARVs Dispensed'];
                 var returnDate = formFieldValues['HIVTC, Adherence Return Date'];
 
-                conditions.disable.push("HIVTC, Adherence Number of Days since refill");
+                // conditions.disable.push("HIVTC, Adherence Number of Days since refill");
 
                 if (dispensedDate && returnDate) {
                         var daysSinceRefill = dateUtil.diffInDaysRegardlessOfTime(dispensedDate, returnDate);
