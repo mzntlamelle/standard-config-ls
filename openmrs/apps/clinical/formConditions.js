@@ -1,3 +1,6 @@
+
+
+
 // Load external FC modules synchronously before any rules run.
 // Add more files to the array as needed.
 (function loadConfigs() {
@@ -22,6 +25,16 @@
         }
     });
 }()); //iife
+
+
+// Just above is a file that was introduced to enable formConditions to pick rules from external files.
+// It had to be done this way due to the limitations we were experiencing with JS modules.
+
+// To help better maintainance for implementers, please adhere to these simple rules:
+// 1. The config files to be placed in /fc should match the title of the form in the clinical module
+// 2. Add comments to the rules for ease of tracing
+
+
 
 
 Bahmni.ConceptSet.FormConditions.rules = {
