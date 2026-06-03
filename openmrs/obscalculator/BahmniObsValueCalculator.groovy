@@ -15,6 +15,7 @@ import org.openmrs.util.LocaleUtility;
 
 import org.joda.time.LocalDate;
 import org.joda.time.Months;
+import org.joda.time.Days;
 
 public class BahmniObsValueCalculator implements ObsValueCalculator {
 
@@ -57,6 +58,13 @@ public class BahmniObsValueCalculator implements ObsValueCalculator {
 
     static def calculateAndAdd(BahmniEncounterTransaction bahmniEncounterTransaction) {
         Collection<BahmniObservation> observations = bahmniEncounterTransaction.getObservations()
+
+        // ART Adherence calculator (server-side port of adherenceCalculatorOne.js).
+        // Handles its own concepts and returns; non-adherence encounters fall through to BMI etc.
+        if (calculateAdherence(bahmniEncounterTransaction, observations)) {
+            return
+        }
+
         def nowAsOfEncounter = bahmniEncounterTransaction.getEncounterDateTime() != null ? bahmniEncounterTransaction.getEncounterDateTime() : new Date();
 
         BahmniObservation heightObservation = find("Height", observations, null)
@@ -182,6 +190,94 @@ public class BahmniObsValueCalculator implements ObsValueCalculator {
                 voidObs(calculatedObs)
             }
         }
+    }
+
+    // ART Adherence (ported from adherenceCalculatorOne.js).
+    //   D = Return Date - Dispensed Date
+    //   Percentage Adherence = floor(((A - B) / C / D) * 100)
+    //   ART Treatment Adherence: <85 || >105 = Poor, 85..94 = Fair, 95..105 = Good
+    // Returns true if this encounter was an adherence encounter (so BMI etc. are skipped).
+    static boolean calculateAdherence(BahmniEncounterTransaction etx, Collection<BahmniObservation> observations) {
+        BahmniObservation dispensedObs = find("HIVTC, Adherence Date ARVs Dispensed", observations, null)
+        BahmniObservation returnObs    = find("HIVTC, Adherence Return Date", observations, null)
+
+        BahmniObservation daysObs = find("HIVTC, Adherence Number of Days since refill", observations, null)
+        BahmniObservation pctObs  = find("HIVTC, Percentage Adherence", observations, null)
+        BahmniObservation adhObs  = find("HIVTC, ART Treatment Adherence", observations, null)
+
+        // Not an adherence encounter -> let the other calculators run.
+        if (dispensedObs == null && returnObs == null && daysObs == null && pctObs == null && adhObs == null) {
+            return false
+        }
+
+        // No usable dates -> clear any previously calculated outputs and stop.
+        if (!hasValue(dispensedObs) || !hasValue(returnObs)) {
+            voidObs(daysObs); voidObs(pctObs); voidObs(adhObs)
+            return true
+        }
+
+        BahmniObservation parent = obsParent(dispensedObs, null) ?: obsParent(returnObs, null)
+        Date obsDatetime = getDate(dispensedObs) ?: getDate(returnObs)
+
+        LocalDate dispensedDate = toLocalDate(dispensedObs.getValue())
+        LocalDate returnDate    = toLocalDate(returnObs.getValue())
+        int daysSinceRefill = Days.daysBetween(dispensedDate, returnDate).getDays()
+
+        System.out.println("eReg — Days Since Refill = " + daysSinceRefill + " -----eReg eReg eReg eReg")
+
+        daysObs = daysObs ?: createObs("HIVTC, Adherence Number of Days since refill", parent, etx, obsDatetime) as BahmniObservation
+        daysObs.setValue(daysSinceRefill as Double)
+
+        BahmniObservation aObs = find("HIVTC, Adherence Total amount taken home", observations, null) // A
+        BahmniObservation bObs = find("HIVTC, Adherence Pill count", observations, null)              // B
+        BahmniObservation cObs = find("HIVTC, Adherence Daily ARV Dose", observations, null)          // C
+
+        if (!(hasValue(aObs) && hasValue(bObs) && hasValue(cObs)) || daysSinceRefill == 0) {
+            voidObs(pctObs); voidObs(adhObs)
+            return true
+        }
+
+        double a = aObs.getValue() as Double
+        double b = bObs.getValue() as Double
+        double c = cObs.getValue() as Double
+        double percentage = Math.floor(((a - b) / c / daysSinceRefill) * 100)
+
+        pctObs = pctObs ?: createObs("HIVTC, Percentage Adherence", parent, etx, obsDatetime) as BahmniObservation
+        pctObs.setValue(percentage)
+
+        String adherence
+        if (percentage < 85 || percentage > 105) {
+            adherence = "Poor adherence"
+        } else if (percentage >= 85 && percentage < 95) {
+            adherence = "Fair adherence"
+        } else { // 95..105 inclusive
+            adherence = "Good adherence"
+        }
+
+        // ART Treatment Adherence is a CODED concept. The emrapi ObsMapper resolves coded values
+        // by reading the "uuid" key off a Map, so the value must carry the answer concept's UUID
+        // (a plain String would resolve to null and NPE during save).
+        adhObs = adhObs ?: createObs("HIVTC, ART Treatment Adherence", parent, etx, obsDatetime) as BahmniObservation
+        adhObs.setValue(codedValue(adherence))
+        return true
+    }
+
+    // Builds the {uuid, name} value map the ObsMapper expects for a coded obs answer.
+    private static Map codedValue(String answerConceptName) {
+        Concept answer = Context.getConceptService().getConceptByName(answerConceptName)
+        if (answer == null) {
+            throw new IllegalArgumentException("Adherence answer concept not found by name: '" + answerConceptName + "'")
+        }
+        Map value = new LinkedHashMap()
+        value.put("uuid", answer.getUuid())
+        value.put("name", answer.getName().getName())
+        return value
+    }
+
+    private static LocalDate toLocalDate(Object value) {
+        if (value == null) return null
+        if (value instanceof Date) return new LocalDate(value)
+        return new LocalDate(value.toString())  // ISO date / datetime string
     }
 
     private static BahmniObservation obsParent(BahmniObservation child, BahmniObservation parent) {
