@@ -21,7 +21,7 @@
             console.error('[FC] failed to load', url, '— got HTTP', xhr.status);
         }
     });
-}());
+}()); //iife
 
 
 Bahmni.ConceptSet.FormConditions.rules = {
