@@ -1,6 +1,3 @@
-
-
-
 // Load external FC modules synchronously before any rules run.
 // Add more files to the array as needed.
 (function loadConfigs() {
@@ -34,7 +31,7 @@
 // 1. The config files to be placed in /fc should match the title of the form in the clinical module
 // 2. Add comments to the rules for ease of tracing
 
-
+(function () {console.log("Loading form conditions rules...")})();
 
 
 Bahmni.ConceptSet.FormConditions.rules = {
@@ -3384,7 +3381,7 @@ Bahmni.ConceptSet.FormConditions.rules = {
         },
 
         //Working on the Adherence Calculator
-        'HIVTC, Adherence Date ARVs Dispensed': window.buildAdherenceCalculatorConditions,
+        'HIVTC, Adherence Date ARVs Dispensed':window.buildAdherenceCalculatorConditions,
         'HIVTC, Adherence Return Date': window.buildAdherenceCalculatorConditions,
         // Also recalculate when the pill-count inputs (A/B/C) change, not just the dates
         'HIVTC, Adherence Total amount taken home': window.buildAdherenceCalculatorConditions,
