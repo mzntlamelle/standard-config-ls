@@ -468,7 +468,7 @@ FROM (
 						from obs o
 								-- HTS SELF TEST STRATEGY
 								 INNER JOIN patient ON o.person_id = patient.patient_id 
-								 AND o.concept_id = 4845 and value_coded = 4822
+								 AND ( (o.concept_id = 4845 AND value_coded = 4822) OR o.concept_id = 6370 )
 								 AND patient.voided = 0 AND o.voided = 0
 								 AND MONTH(o.obs_datetime) = MONTH(CAST('#endDate#' AS DATE)) 
 								 AND YEAR(o.obs_datetime) = YEAR(CAST('#endDate#' AS DATE))
@@ -510,7 +510,7 @@ UNION
 						from obs o
 								-- HTS SELF TEST STRATEGY
 								 INNER JOIN patient ON o.person_id = patient.patient_id 
-								 AND o.concept_id = 4845 and value_coded = 4822
+								 AND ( (o.concept_id = 4845 AND value_coded = 4822) OR o.concept_id = 6370 )
 								 AND patient.voided = 0 AND o.voided = 0
 								 AND MONTH(o.obs_datetime) = MONTH(CAST('#endDate#' AS DATE)) 
 								 AND YEAR(o.obs_datetime) = YEAR(CAST('#endDate#' AS DATE))
@@ -552,7 +552,7 @@ UNION
 						from obs o
 								-- HTS SELF TEST STRATEGY
 								 INNER JOIN patient ON o.person_id = patient.patient_id 
-								 AND o.concept_id = 4845 and value_coded = 4822
+								 AND ( (o.concept_id = 4845 AND value_coded = 4822) OR o.concept_id = 6370 )
 								 AND patient.voided = 0 AND o.voided = 0
 								 AND MONTH(o.obs_datetime) = MONTH(CAST('#endDate#' AS DATE)) 
 								 AND YEAR(o.obs_datetime) = YEAR(CAST('#endDate#' AS DATE))
