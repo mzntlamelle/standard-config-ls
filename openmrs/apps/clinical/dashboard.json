@@ -90,6 +90,49 @@
                     "logo": "../images/bahmniLogo.png"
                 }
             },
+            "labOrdersControl": {
+                "orderType": "Lab Order",
+                "type": "ordersControl",
+                "title": "Lab Orders",
+                "dashboardConfig": {  
+                   "conceptNames": [
+                        "eRegister Lab Order Number",
+                        "DISA, VL Result [#/vol]", 
+                        "DISA, VL Result [log#/vol]",
+                        "DISA, VL Result (low value)",
+                        "DISA, GeneXpert Result, MTB Result", 
+                        "DISA, GeneXpert Result, Rifampicin", 
+                        "DISA, VL Result Testdate",
+                        "DISA, VL Result Comments",
+                        "DISA, Smear Result, Ziehl Neelsen",
+                        "DISA, Smear Result, Grading",
+                        "DISA, ZN Date",
+                        "DISA, ZN Remarks"
+                        ],
+                   "numberOfVisits": "4",
+                   "showHeader": true,
+                   "obsIgnoreList" : ["Supine"]
+                 } ,
+                "expandedViewConfig": {
+                     "conceptNames": [
+                        "eRegister Lab Order Number",
+                        "DISA, VL Result [#/vol]", 
+                        "DISA, VL Result [log#/vol]",
+                        "DISA, VL Result (low value)",
+                        "DISA, GeneXpert Result, MTB Result" ,
+                        "DISA, GeneXpert Result, Rifampicin", 
+                        "DISA, VL Result Testdate",
+                        "DISA, VL Result Comments",
+                        "HIVTC, VL Pregnancy Status",
+                        "HIVTC, VL Breastfeeding Status",
+                        "DISA, Smear Result, Ziehl Neelsen",
+                        "DISA, Smear Result, Grading",
+                        "DISA, ZN Date",
+                        "DISA, ZN Remarks"
+                        ],
+                      "showHeader": true
+                }
+            },
             "radiology": {
                 "translationKey": "DASHBOARD_TITLE_RADIOLOGY_KEY",
                 "type": "radiology",
@@ -542,11 +585,27 @@
                 "showDetailsButton": true,
                 "displayOrder": 1,
                 "dashboardConfig": {
-                    "conceptNames": []
+                    "conceptNames": [
+                        "eRegister Lab Order Number",
+                        "DISA, VL Result [#/vol]", 
+                        "DISA, VL Result [log#/vol]",
+                        "DISA, VL Result (low value)",
+                        "DISA, GeneXpert Result, MTB Result" ,
+                        "DISA, GeneXpert Result, Rifampicin", 
+                        "DISA, VL Result Testdate",
+                        "DISA, VL Result Comments",
+                        "HIVTC, VL Pregnancy Status",
+                        "HIVTC, VL Breastfeeding Status",
+                        "DISA, Smear Result, Ziehl Neelsen",
+                        "DISA, Smear Result, Grading",
+                        "DISA, ZN Date",
+                        "DISA, ZN Remarks"
+                    ],
+                    "showHeader": true,
+                    "showDetailsButton": true
                 },
                 "expandedViewConfig": {
-                    "conceptNames": [],
-                    "showDetailsButton": true
+                    "conceptNames": []
                 }
             },
             "procedureDisplayControl": {
