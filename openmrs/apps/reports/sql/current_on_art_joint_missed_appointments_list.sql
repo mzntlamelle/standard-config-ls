@@ -26,7 +26,7 @@ FROM
 											from obs B
 											inner join 
 											(select person_id, max(obs_datetime), SUBSTRING(MAX(CONCAT(obs_datetime, obs_id)), 20) AS observation_id
-											from obs where concept_id = 3753
+											from obs where concept_id IN (3753,6515)
 											and obs_datetime <= cast('#endDate#' as date)
 											group by person_id) as A
 											on A.observation_id = B.obs_group_id
@@ -136,7 +136,7 @@ FROM
 									from obs B
 									inner join 
 									(select person_id, max(obs_datetime), SUBSTRING(MAX(CONCAT(obs_datetime, obs_id)), 20) AS observation_id
-									from obs where concept_id = 3753
+									from obs where concept_id IN (3753,6515)
 									and obs_datetime <= cast('#endDate#' as date)
 									group by person_id) as A
 									on A.observation_id = B.obs_group_id
@@ -242,7 +242,7 @@ FROM
 									from obs B
 									inner join 
 									(select person_id, max(obs_datetime), SUBSTRING(MAX(CONCAT(obs_datetime, obs_id)), 20) AS observation_id
-									from obs where concept_id = 3753
+									from obs where concept_id IN (3753,6515)
 									and obs_datetime <= cast('#endDate#' as date)
 									group by person_id) as A
 									on A.observation_id = B.obs_group_id
