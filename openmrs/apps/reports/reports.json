@@ -16,7 +16,7 @@
     }
   },
   "artclients_seenandconsultedlist": {
-    "name": "ART-002A ART Clients Seen and Initiated (List)",
+    "name": "ART-003 ART Clients Seen and Initiated (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -24,7 +24,7 @@
     }
   },
   "txcurr_test": {
-    "name": "ART-002A TxCurr Quarterly Test (List)",
+    "name": "ART-004 TxCurr Quarterly Test (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -32,7 +32,7 @@
     }
   },
   "currentonart_jointmissedListSQL": {
-    "name": "ART-003 Missed Appointments Status Report (List)",
+    "name": "ART-005 Missed Appointments Status Report (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -40,7 +40,7 @@
     }
   },
   "currentonart_jointmissedPivotSQL": {
-    "name": "ART-004 Missed Appointments Status Report (Pivot)",
+    "name": "ART-006 Missed Appointments Status Report (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -48,7 +48,7 @@
     }
   },
   "PEPFARcurrentonart_jointmissedListSQL": {
-    "name": "ART-005 ART clients with Appointment Status-28 Days (List)",
+    "name": "ART-007 ART clients with Appointment Status-28 Days (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -56,7 +56,7 @@
     }
   },
   "PEPFARcurrentonart_jointmissedPivotSQL": {
-    "name": "ART-006 ART clients with Appointment Status-28 Days (Pivot)",
+    "name": "ART-008 ART clients with Appointment Status-28 Days (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -64,7 +64,7 @@
     }
   },
   "Clients_enrolled": {
-    "name": "ART-007 Clients newly enrolled on ART",
+    "name": "ART-009 Clients newly enrolled on ART",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -72,7 +72,7 @@
     }
   },
   "regimens": {
-    "name": "ART-008 Current on ART with regimens (List)",
+    "name": "ART-010 Current on ART with regimens (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -80,7 +80,7 @@
     }
   },
   "ART_report_regimen": {
-    "name": "ART-009 Current on ART with regimens (List)",
+    "name": "ART-011 Current on ART with regimens (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -88,7 +88,7 @@
     }
   },
   "viralloadresultsstatuslist": {
-    "name": "ART-010 Viral Load Results Status, within 3 months (List)",
+    "name": "ART-012 Viral Load Results Status, within 3 months (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -96,7 +96,7 @@
     }
   },
   "viralloadresultsstatuspivot": {
-    "name": "ART-011 Viral Load Results Status, within 3 months (Pivot)",
+    "name": "ART-013 Viral Load Results Status, within 3 months (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -104,7 +104,7 @@
     }
   },
   "Modified_ART": {
-    "name": "ART-012 Current on ART with Modified ages (pivot)",
+    "name": "ART-014 Current on ART with Modified ages (pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -112,7 +112,7 @@
     }
   },
   "substitutedclientslist": {
-    "name": "ART-013 Substituted Clients (List)",
+    "name": "ART-015 Substituted Clients (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -120,7 +120,7 @@
     }
   },
   "substitutedclientspivot": {
-    "name": "ART-014 Substituted Clients (Pivot)",
+    "name": "ART-016 Substituted Clients (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -128,7 +128,7 @@
     }
   },
   "switchedclientslist": {
-    "name": "ART-015 Switched Clients (List)",
+    "name": "ART-017 Switched Clients (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -136,7 +136,7 @@
     }
   },
   "switchedclientspivot": {
-    "name": "ART-016 Switched Clients (Pivot)",
+    "name": "ART-018 Switched Clients (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -144,7 +144,7 @@
     }
   },
   "registeredartclientswithartconsultation_process": {
-    "name": "ART-017 Registered ART Visits with ART Consultation (List)",
+    "name": "ART-019 Registered ART Visits with ART Consultation (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -152,7 +152,7 @@
     }
   },
   "registeredartclientswithartconsultation_process_pivot": {
-    "name": "ART-018 Registered ART Visits with ART Consultation (Pivot)",
+    "name": "ART-020 Registered ART Visits with ART Consultation (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -160,7 +160,7 @@
     }
   },
   "registeredartclientswithintakes_joinversion": {
-    "name": "ART-019 Registered ART Clients with Intakes (List)",
+    "name": "ART-021 Registered ART Clients with Intakes (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -168,7 +168,7 @@
     }
   },
   "registeredartclientswithintakes_joinversion_pivot": {
-    "name": "ART-020 Registered ART Clients with Intakes (Pivot)",
+    "name": "ART-022 Registered ART Clients with Intakes (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -176,7 +176,7 @@
     }
   },
   "Nointakes": {
-    "name": "ART-021 ART Client Without Intakes (List)",
+    "name": "ART-023 ART Client Without Intakes (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -184,7 +184,7 @@
     }
   },
   "DQA_Tool": {
-    "name": "ART-022 Data Quality Assessment tool",
+    "name": "ART-024 Data Quality Assessment tool",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -192,7 +192,7 @@
     }
   },
   "IndexClientEligible_list": {
-    "name": "ART-023 Clients Eligible for Indexing (List)",
+    "name": "ART-025 Clients Eligible for Indexing (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -200,7 +200,7 @@
     }
   },
   "IndexClientEligible_pivot": {
-    "name": "ART-024 Clients Eligible for Indexing (Pivot)",
+    "name": "ART-026 Clients Eligible for Indexing (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -208,7 +208,7 @@
     }
   },
   "IndexOfferedClients_list": {
-    "name": "ART-025 Clients Offered Indexing (List)",
+    "name": "ART-027 Clients Offered Indexing (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -216,7 +216,7 @@
     }
   },
   "IndexOfferedClients_pivot": {
-    "name": "ART-026 Clients Offered Indexing (Pivot)",
+    "name": "ART-028 Clients Offered Indexing (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -224,7 +224,7 @@
     }
   },
   "IndexContactsElicited_list": {
-    "name": "ART-027 Index Contacts Elicited (List)",
+    "name": "ART-029 Index Contacts Elicited (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -232,7 +232,7 @@
     }
   },
   "IndexContactsElicited_pivot": {
-    "name": "ART-028 Index Contacts Elicited (Pivot)",
+    "name": "ART-030 Index Contacts Elicited (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -240,7 +240,7 @@
     }
   },
   "IndexContactsElicitedWithHIVStatus_list": {
-    "name": "ART-029 Index Contacts Elicited with HIV Status (List)",
+    "name": "ART-031 Index Contacts Elicited with HIV Status (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -248,7 +248,7 @@
     }
   },
   "IndexContactsElicitedWithHIVStatus_pivot": {
-    "name": "ART-030 Index Contacts Elicited with HIV Status (Pivot)",
+    "name": "ART-032 Index Contacts Elicited with HIV Status (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -256,7 +256,7 @@
     }
   },
   "txnew_list": {
-    "name": "ART-031 TX_NEW (List)",
+    "name": "ART-033 TX_NEW (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -264,7 +264,7 @@
     }
   },
   "txnew_pivot": {
-    "name": "ART-032 TX_NEW (PIVOT)",
+    "name": "ART-034 TX_NEW (PIVOT)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -272,7 +272,7 @@
     }
   },
   "txnew_coarseages": {
-    "name": "ART-033 Tx new Coarse Ages",
+    "name": "ART-035 Tx new Coarse Ages",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -280,7 +280,7 @@
     }
   },
   "txnew_coarse_ages_pivot": {
-    "name": "ART-034 Tx new Coarse Ages (Pivot)",
+    "name": "ART-036 Tx new Coarse Ages (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -288,7 +288,7 @@
     }
   },
   "cxca_scrnlist": {
-    "name": "ART-035 CXCA_SCRN (List)",
+    "name": "ART-037 CXCA_SCRN (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -296,7 +296,7 @@
     }
   },
   "cxca_scrn_pivot": {
-    "name": "ART-036 CXCA_SCRN (Pivot)",
+    "name": "ART-038 CXCA_SCRN (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -304,7 +304,7 @@
     }
   },
   "Cervical_Cancer_Screening": {
-    "name": "ART-037 Cervical Cancer Screening (List)",
+    "name": "ART-039 Cervical Cancer Screening (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -312,7 +312,7 @@
     }
   },
   "Cervical_Cancer_Screening_Power": {
-    "name": "ART-038 Cervical Cancer Screening (Pivot)",
+    "name": "ART-040 Cervical Cancer Screening (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -320,7 +320,7 @@
     }
   },
   "cxca_scrnlist_pos": {
-    "name": "ART-039 CXCA_SCRN_POS (List)",
+    "name": "ART-041 CXCA_SCRN_POS (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -328,7 +328,7 @@
     }
   },
   "cxca_scrnpivot_pos": {
-    "name": "ART-040 CXCA_SCRN_POS (Pivot)",
+    "name": "ART-042 CXCA_SCRN_POS (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -336,7 +336,7 @@
     }
   },
   "cxca_txlist": {
-    "name": "ART-041 CXCA_TX_NUMERATOR (List)",
+    "name": "ART-043 CXCA_TX_NUMERATOR (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -344,7 +344,7 @@
     }
   },
   "cxca_txpivot": {
-    "name": "ART-042 CXCA_TX_NUMERATOR (Pivot)",
+    "name": "ART-044 CXCA_TX_NUMERATOR (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -352,7 +352,7 @@
     }
   },
   "txcurrcombinedpivot_pepfar": {
-    "name": "ART-043 TX_CURR (Pivot)",
+    "name": "ART-045 TX_CURR (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -360,7 +360,7 @@
     }
   },
   "txcurrcombinedlist_perfar": {
-    "name": "ART-044 TX_CURR (List)",
+    "name": "ART-046 TX_CURR (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -368,7 +368,7 @@
     }
   },
   "txcurrmmd_list": {
-    "name": "ART-045 TX_CURR MMD (List)",
+    "name": "ART-047 TX_CURR MMD (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -376,7 +376,7 @@
     }
   },
   "txcurrmmd_pivot": {
-    "name": "ART-046 TX_CURR MMD (PIVOT)",
+    "name": "ART-048 TX_CURR MMD (PIVOT)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -384,7 +384,7 @@
     }
   },
   "txcurrcoarse_list": {
-    "name": "ART-047 TX_CURR Coarse Ages (List)",
+    "name": "ART-049 TX_CURR Coarse Ages (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -392,7 +392,7 @@
     }
   },
   "txcurrcoarse_pivot": {
-    "name": "ART-048 TX_CURR Coarse Ages (Pivot)",
+    "name": "ART-050 TX_CURR Coarse Ages (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -400,7 +400,7 @@
     }
   },
   "txrtt_list": {
-    "name": "ART-049 TX_RTT (List)",
+    "name": "ART-051 TX_RTT (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -408,7 +408,7 @@
     }
   },
   "txrtt_pivot": {
-    "name": "ART-050 TX_RTT (Pivot)",
+    "name": "ART-052 TX_RTT (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -416,7 +416,7 @@
     }
   },
   "txml_list": {
-    "name": "ART-051 TX_ML (List)",
+    "name": "ART-053 TX_ML (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -424,7 +424,7 @@
     }
   },
   "txml_pivot": {
-    "name": "ART-052 TX_ML (Pivot)",
+    "name": "ART-054 TX_ML (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -432,7 +432,7 @@
     }
   },
   "txpvlsnum_list": {
-    "name": "ART-053 TX_PVLS Numerator (List))",
+    "name": "ART-055 TX_PVLS Numerator (List))",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -440,7 +440,7 @@
     }
   },
   "txpvlsnum_pivot": {
-    "name": "ART-054 TX_PVLS Numerator (Pivot)",
+    "name": "ART-056 TX_PVLS Numerator (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -448,7 +448,7 @@
     }
   },
   "txpvlsdenom_list": {
-    "name": "ART-055 TX_PVLS Denominator (List)",
+    "name": "ART-057 TX_PVLS Denominator (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -456,7 +456,7 @@
     }
   },
   "txpvlsdenom_pivot": {
-    "name": "ART-056 TX_PVLS Denominator (Pivot)",
+    "name": "ART-058 TX_PVLS Denominator (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -464,7 +464,7 @@
     }
   },
   "dailyvlresult_list": {
-    "name": "ART-057 Daily Viral Load Results (List)",
+    "name": "ART-059 Daily Viral Load Results (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -472,7 +472,7 @@
     }
   },
   "dailyvlresult_pivot": {
-    "name": "ART-058 Daily Viral Load Results (Pivot)",
+    "name": "ART-060 Daily Viral Load Results (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -480,7 +480,7 @@
     }
   },
   "dailycd4result_list": {
-    "name": "ART-059 Daily CD4 Results (List)",
+    "name": "ART-061 Daily CD4 Results (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -488,7 +488,7 @@
     }
   },
   "dailycd4result_pivot": {
-    "name": "ART-060 Daily CD4 Results (Pivot)",
+    "name": "ART-062 Daily CD4 Results (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -496,7 +496,7 @@
     }
   },
   "DHIS_Pre_ART": {
-    "name": "ART-061 Pre-ART",
+    "name": "ART-063 Pre-ART",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -504,7 +504,7 @@
     }
   },
   "DHIS_ART_CARE_A": {
-    "name": "ART-062 ART CARE - NEW AND CURRENT ON ART",
+    "name": "ART-064 ART CARE - NEW AND CURRENT ON ART",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -512,7 +512,7 @@
     }
   },
   "DHIS_CTX": {
-    "name": "ART-063 COTRIMOX PROPHYLAXIS/DAPSONE",
+    "name": "ART-065 COTRIMOX PROPHYLAXIS/DAPSONE",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -520,7 +520,7 @@
     }
   },
   "DHIS_NUTRITIONAL_SUPPLEMENT": {
-    "name": "ART-064 NUTRITIONAL SUPPLEMENT",
+    "name": "ART-066 NUTRITIONAL SUPPLEMENT",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -528,7 +528,7 @@
     }
   },
   "ART-067 HIV Care and Treatment 2020a": {
-    "name": "ART-065 HIV Care and Treatment 2020a",
+    "name": "ART-067 HIV Care and Treatment 2020a",
     "DHISProgram": true,
     "type": "concatenated",
     "config": {
@@ -633,7 +633,7 @@
     }
   },
   "peads_clientlist": {
-    "name": "ART-066 PEADS Aging Out Analysis (Client List)",
+    "name": "ART-068 PEADS Aging Out Analysis (Client List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -641,7 +641,7 @@
     }
   },
   "peads_outcomes": {
-    "name": "ART-067 PEADS Aging Out Analysis (Client Outcomes)",
+    "name": "ART-069 PEADS Aging Out Analysis (Client Outcomes)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -649,7 +649,7 @@
     }
   },
   "peads_appointments": {
-    "name": "ART-068 PEADS Aging Out Analysis (Client Appointments)",
+    "name": "ART-070 PEADS Aging Out Analysis (Client Appointments)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -657,7 +657,7 @@
     }
   },
   "peads_transition": {
-    "name": "ART-069 PEADS Regimen Transition (List)",
+    "name": "ART-071 PEADS Regimen Transition (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -665,7 +665,7 @@
     }
   },
   "ahd_list": {
-    "name": "ART-070 AHD Report (List)",
+    "name": "ART-072 AHD Report (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -673,7 +673,7 @@
     }
   },
   "ahd_pivot": {
-    "name": "ART-071 AHD Report (Pivot)",
+    "name": "ART-073 AHD Report (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -681,7 +681,7 @@
     }
   },
   "ahd_cryptococal_meningitis_list": {
-    "name": "ART-072 AHD Cryptococal Meningitis Report (List)",
+    "name": "ART-074 AHD Cryptococal Meningitis Report (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -689,7 +689,7 @@
     }
   },
   "ahd_cryptococal_meningitis_pivot": {
-    "name": "ART-073 AHD Cryptococal Meningitis Report (Pivot)",
+    "name": "ART-075 AHD Cryptococal Meningitis Report (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -697,7 +697,7 @@
     }
   },
   "ahd_tb_list": {
-    "name": "ART-074 AHD TB (List)",
+    "name": "ART-076 AHD TB (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -705,7 +705,7 @@
     }
   },
   "ahd_tb_pivot": {
-    "name": "ART-075 AHD TB (Pivot)",
+    "name": "ART-077 AHD TB (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -713,7 +713,7 @@
     }
   },
   "ahd_treatment_list": {
-    "name": "ART-076 AHD Treatment (List)",
+    "name": "ART-078 AHD Treatment (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -721,7 +721,7 @@
     }
   },
   "ahd_treatment_pivot": {
-    "name": "ART-077 AHD Treatment (Pivot)",
+    "name": "ART-079 AHD Treatment (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -729,7 +729,7 @@
     }
   },
   "weekly_ppr_list": {
-    "name": "ART-078 Weekly PPR (List)",
+    "name": "ART-080 Weekly PPR (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -737,7 +737,7 @@
     }
   },
   "weekly_ppr_pivot": {
-    "name": "ART-079 Weekly PPR (Pivot)",
+    "name": "ART-081 Weekly PPR (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -745,7 +745,7 @@
     }
   },
   "PrEP_new": {
-    "name": "ART-080 PrEP New (List)",
+    "name": "ART-082 PrEP New (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -753,7 +753,7 @@
     }
   },
   "PrEP_new_pivot": {
-    "name": "ART-081 PrEP New (Pivot)",
+    "name": "ART-083 PrEP New (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -761,7 +761,7 @@
     }
   },
   "PrEP_ct_list": {
-    "name": "ART-082 PrEP CT (List)",
+    "name": "ART-084 PrEP CT (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -769,7 +769,7 @@
     }
   },
   "PrEP_ct_pivot": {
-    "name": "ART-083 PrEP CT (Pivot)",
+    "name": "ART-085 PrEP CT (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -777,7 +777,7 @@
     }
   },
   "PrEP_curr_list": {
-    "name": "ART-084 PrEP Current (List)",
+    "name": "ART-086 PrEP Current (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -785,7 +785,7 @@
     }
   },
   "PrEP_curr_pivot": {
-    "name": "ART-085 PrEP Current (Pivot)",
+    "name": "ART-087 PrEP Current (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -793,7 +793,7 @@
     }
   },
   "visitors_list": {
-    "name": "ART-086 Visitors Report (List)",
+    "name": "ART-088 Visitors Report (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -801,7 +801,7 @@
     }
   },
   "visitors_pivot": {
-    "name": "ART-087 Visitors Report (Pivot)",
+    "name": "ART-089 Visitors Report (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -809,7 +809,7 @@
     }
   },
   "vmmc_pivot": {
-    "name": "ART-088 VMMC (List)",
+    "name": "ART-090 VMMC (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -817,7 +817,7 @@
     }
   },
   "blood draw eligibility": {
-    "name": "ART-089 Clients Eligible for Blood Draw (List)",
+    "name": "ART-091 Clients Eligible for Blood Draw (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -825,7 +825,7 @@
     }
   },
   "ART.6_list": {
-    "name": "ART-090 ART Clients with Viral Load Test Results (List)",
+    "name": "ART-092 ART Clients with Viral Load Test Results (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -833,7 +833,7 @@
     }
   },
   "ART.6_pivot": {
-    "name": "ART-091 ART Clients with Viral Load Test Results (Pivot)",
+    "name": "ART-093 ART Clients with Viral Load Test Results (Pivot)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -841,7 +841,7 @@
     }
   },
   "ART.8_list": {
-    "name": "ART-092 Appropriate second VL test (List)",
+    "name": "ART-094 Appropriate second VL test (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
@@ -849,11 +849,19 @@
     }
   },
   "ART.13_list": {
-    "name": "ART-093 ART Adherence Proxy (List)",
+    "name": "ART-095 ART Adherence Proxy (List)",
     "type": "MRSGeneric",
     "requiredPrivilege": "app:reports",
     "config": {
       "sqlPath": "/etc/bahmni_config/openmrs/apps/reports/sql/ART13_list.sql/"
+    }
+  },
+  "bonolo_meds_prescription_report": {
+    "name": "ART-096 | Bonolo Health Prescriptions (List)",
+    "type": "MRSGeneric",
+    "requiredPrivilege":"app:reports",
+    "config": {
+      "sqlPath": "/etc/bahmni_config/openmrs/apps/reports/sql/bonolo_meds_prescriptions_list.sql/"
     }
   },
   "htsfinalhivstatusbyservicepointlist": {
@@ -1943,7 +1951,6 @@
   "DiagnosisCountReport": {
     "name": "Diagnosis Count Report",
     "type": "MRSGeneric",
-    "requiredPrivilege": "app:reports",
     "requiredPrivilege": "app:reports",
     "config": {
       "sqlPath": "/etc/bahmni_config/openmrs/apps/reports/sql/diagnosisCount.sql"
