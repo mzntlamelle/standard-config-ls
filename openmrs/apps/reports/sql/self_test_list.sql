@@ -17,7 +17,7 @@ FROM (
 						from obs o
 								-- HTS SELF TEST STRATEGY
 								 INNER JOIN patient ON o.person_id = patient.patient_id 
-								 AND o.concept_id = 4845 and value_coded = 4822
+								 AND ( (o.concept_id = 4845 AND value_coded = 4822) OR o.concept_id = 6370 )
 								 AND patient.voided = 0 AND o.voided = 0
 								 AND CAST(o.obs_datetime AS DATE) >= CAST('#startDate#' AS DATE)
                 				 AND CAST(o.obs_datetime AS DATE) <= CAST('#endDate#' AS DATE)
@@ -57,7 +57,7 @@ UNION ALL
 						from obs o
 								-- HTS SELF TEST STRATEGY
 								 INNER JOIN patient ON o.person_id = patient.patient_id 
-								 AND o.concept_id = 4845 and value_coded = 4822
+								 AND ( (o.concept_id = 4845 AND value_coded = 4822) OR o.concept_id = 6370 )
 								 AND patient.voided = 0 AND o.voided = 0
 								 AND CAST(o.obs_datetime AS DATE) >= CAST('#startDate#' AS DATE)
                 				 AND CAST(o.obs_datetime AS DATE) <= CAST('#endDate#' AS DATE)
@@ -97,7 +97,7 @@ UNION ALL
 						from obs o
 								-- HTS SELF TEST STRATEGY
 								 INNER JOIN patient ON o.person_id = patient.patient_id 
-								 AND o.concept_id = 4845 and value_coded = 4822
+								 AND ( (o.concept_id = 4845 AND value_coded = 4822) OR o.concept_id = 6370 )
 								 AND patient.voided = 0 AND o.voided = 0
 								 AND CAST(o.obs_datetime AS DATE) >= CAST('#startDate#' AS DATE)
                 				 AND CAST(o.obs_datetime AS DATE) <= CAST('#endDate#' AS DATE)
@@ -138,7 +138,7 @@ Left outer join
                 INNER JOIN patient_identifier ON patient_identifier.patient_id = person.person_id AND patient_identifier.identifier_type = 3 AND patient_identifier.preferred=1
                 
                 AND o.voided=0
-				where o.concept_id = 4833  and o.value_coded = 4834
+				where o.concept_id = 4833  and o.value_coded IN (4834, 6535)
 				AND CAST(o.obs_datetime AS DATE) >= CAST('#startDate#' AS DATE)
                 AND CAST(o.obs_datetime AS DATE) <= CAST('#endDate#' AS DATE)
 				AND patient.voided = 0 AND o.voided = 0
@@ -251,7 +251,7 @@ FROM (
 						from obs o
 								-- HTS SELF TEST STRATEGY
 								 INNER JOIN patient ON o.person_id = patient.patient_id 
-								 AND o.concept_id = 4845 and value_coded = 4822
+								 AND ( (o.concept_id = 4845 AND value_coded = 4822) OR o.concept_id = 6370 )
 								 AND patient.voided = 0 AND o.voided = 0
 								 AND CAST(o.obs_datetime AS DATE) >= CAST('#startDate#' AS DATE)
                 				 AND CAST(o.obs_datetime AS DATE) <= CAST('#endDate#' AS DATE)
@@ -291,7 +291,7 @@ UNION ALL
 						from obs o
 								-- HTS SELF TEST STRATEGY
 								 INNER JOIN patient ON o.person_id = patient.patient_id 
-								 AND o.concept_id = 4845 and value_coded = 4822
+								 AND ( (o.concept_id = 4845 AND value_coded = 4822) OR o.concept_id = 6370 )
 								 AND patient.voided = 0 AND o.voided = 0
 								 AND CAST(o.obs_datetime AS DATE) >= CAST('#startDate#' AS DATE)
                 				 AND CAST(o.obs_datetime AS DATE) <= CAST('#endDate#' AS DATE)
@@ -331,7 +331,7 @@ UNION ALL
 						from obs o
 								-- HTS SELF TEST STRATEGY
 								 INNER JOIN patient ON o.person_id = patient.patient_id 
-								 AND o.concept_id = 4845 and o.value_coded = 4822
+								 AND ( (o.concept_id = 4845 AND o.value_coded = 4822) OR o.concept_id = 6370 )
 								 AND patient.voided = 0 AND o.voided = 0
 								 AND CAST(o.obs_datetime AS DATE) >= CAST('#startDate#' AS DATE)
                 				 AND CAST(o.obs_datetime AS DATE) <= CAST('#endDate#' AS DATE)
@@ -373,7 +373,7 @@ Left outer join
                 INNER JOIN patient_identifier ON patient_identifier.patient_id = person.person_id AND patient_identifier.identifier_type = 3 AND patient_identifier.preferred=1
                 
                 AND o.voided=0
-				where o.concept_id = 4833  and o.value_coded = 4834
+				where o.concept_id = 4833  and o.value_coded IN (4834, 6535)
 				AND CAST(o.obs_datetime AS DATE) >= CAST('#startDate#' AS DATE)
                 AND CAST(o.obs_datetime AS DATE) <= CAST('#endDate#' AS DATE)
 				AND patient.voided = 0 AND o.voided = 0
