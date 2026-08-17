@@ -38,7 +38,7 @@ FROM (
 								 AND o.person_id in (
 									select distinct os.person_id
 									from obs os
-									where os.concept_id = 2137 and os.value_coded = 2146
+									where os.concept_id in (2137,4798) and os.value_coded = 2146
 									AND MONTH(os.obs_datetime) = MONTH(CAST('#endDate#' AS DATE)) 
                             		AND YEAR(os.obs_datetime) = YEAR(CAST('#endDate#' AS DATE))
 									AND patient.voided = 0 AND o.voided = 0
@@ -93,7 +93,7 @@ FROM (
 								 AND o.person_id in (
 									select distinct os.person_id
 									from obs os
-									where os.concept_id = 2137 and os.value_coded = 2147
+									where os.concept_id in (2137,4798) and os.value_coded = 2147
 									AND MONTH(os.obs_datetime) = MONTH(CAST('#endDate#' AS DATE)) 
                             		AND YEAR(os.obs_datetime) = YEAR(CAST('#endDate#' AS DATE))
 									AND patient.voided = 0 AND o.voided = 0
@@ -146,7 +146,7 @@ FROM (
 								 AND o.person_id in (
 									select distinct os.person_id
 									from obs os
-									where os.concept_id = 2137 and os.value_coded = 2146
+									where os.concept_id in (2137,4798) and os.value_coded = 2146
 									AND MONTH(os.obs_datetime) = MONTH(CAST('#endDate#' AS DATE)) 
                             		AND YEAR(os.obs_datetime) = YEAR(CAST('#endDate#' AS DATE))
 									AND patient.voided = 0 AND o.voided = 0
@@ -162,7 +162,6 @@ FROM (
 						   WHERE observed_age_group.report_group_name = 'Modified_Ages'
 								) AS HTSClients_HIV_Status
 		ORDER BY HTSClients_HIV_Status.HIV_Status, HTSClients_HIV_Status.Age)
-
 
 		UNION
 
@@ -201,7 +200,7 @@ FROM (
 								 AND o.person_id in (
 									select distinct os.person_id
 									from obs os
-									where os.concept_id = 2137 and os.value_coded = 2147
+									where os.concept_id in (2137,4798) and os.value_coded = 2147
 									AND MONTH(os.obs_datetime) = MONTH(CAST('#endDate#' AS DATE)) 
                             		AND YEAR(os.obs_datetime) = YEAR(CAST('#endDate#' AS DATE))
 									AND patient.voided = 0 AND o.voided = 0
@@ -216,8 +215,8 @@ FROM (
 						   WHERE observed_age_group.report_group_name = 'Modified_Ages'
 								) AS HTSClients_HIV_Status
 		ORDER BY HTSClients_HIV_Status.HIV_Status, HTSClients_HIV_Status.Age)
-		UNION
-		
+
+		UNION		
 
 		(SELECT Id,patientIdentifier AS "Patient_Identifier", patientName AS "Patient_Name", Age, Gender, age_group,location_name, 'CITC' AS 'Testing_Strategies'
 				, 'Repeat' AS 'Testing_History' , HIV_Status, sort_order
@@ -254,12 +253,11 @@ FROM (
 								 AND o.person_id in (
 									select distinct os.person_id
 									from obs os
-									where os.concept_id = 2137 and os.value_coded = 2146
+									where os.concept_id in (2137,4798) and os.value_coded = 2146
 									AND MONTH(os.obs_datetime) = MONTH(CAST('#endDate#' AS DATE)) 
                             		AND YEAR(os.obs_datetime) = YEAR(CAST('#endDate#' AS DATE))
 									AND patient.voided = 0 AND o.voided = 0
-								 )
-								  
+								 )								  
                                  
 								 INNER JOIN person ON person.person_id = patient.patient_id AND person.voided = 0
 								 INNER JOIN person_name ON person.person_id = person_name.person_id AND person_name.preferred = 1
@@ -310,7 +308,7 @@ FROM (
 								 AND o.person_id in (
 									select distinct os.person_id
 									from obs os
-									where os.concept_id = 2137 and os.value_coded = 2147
+									where os.concept_id in (2137,4798) and os.value_coded = 2147
 									AND MONTH(os.obs_datetime) = MONTH(CAST('#endDate#' AS DATE)) 
                             		AND YEAR(os.obs_datetime) = YEAR(CAST('#endDate#' AS DATE))
 									AND patient.voided = 0 AND o.voided = 0
@@ -363,7 +361,7 @@ FROM (
 								 AND o.person_id in (
 									select distinct os.person_id
 									from obs os
-									where os.concept_id = 2137 and os.value_coded = 2146
+									where os.concept_id in (2137,4798) and os.value_coded = 2146
 									AND MONTH(os.obs_datetime) = MONTH(CAST('#endDate#' AS DATE)) 
                             		AND YEAR(os.obs_datetime) = YEAR(CAST('#endDate#' AS DATE))
 									AND patient.voided = 0 AND o.voided = 0
@@ -419,7 +417,7 @@ FROM (
 								 AND o.person_id in (
 									select distinct os.person_id
 									from obs os
-									where os.concept_id = 2137 and os.value_coded = 2147
+									where os.concept_id in (2137,4798) and os.value_coded = 2147
 									AND MONTH(os.obs_datetime) = MONTH(CAST('#endDate#' AS DATE)) 
                             		AND YEAR(os.obs_datetime) = YEAR(CAST('#endDate#' AS DATE))
 									AND patient.voided = 0 AND o.voided = 0
@@ -444,10 +442,7 @@ FROM (
 			-- , HTS_Status_Detailed.Gender
 			-- , HTS_Status_Detailed.HIV_Status
 
-
 UNION
-
-
 
 Select Id, Patient_Identifier, Patient_Name,Age, Gender, age_group,location_name,Testing_Strategies,Testing_History, HIV_Status, sort_order
 from(
@@ -537,6 +532,7 @@ UNION
 		ORDER BY HTSClients_HIV_Status.HIV_Status, HTSClients_HIV_Status.Age)
 		
 UNION
+
 (SELECT Id,patientIdentifier AS "Patient_Identifier", patientName AS "Patient_Name", Age, Gender, age_group,location_name, 'Self-test' AS 'Testing_Strategies'
 				 , 'N/A' AS 'Testing_History', HIV_Status, sort_order
 		FROM
