@@ -202,7 +202,7 @@ AND Clients_Seen.Id not in (
 										select oss.person_id, MAX(oss.obs_datetime) as max_observation,
 										SUBSTRING(MAX(CONCAT(oss.obs_datetime, oss.value_coded)), 20) as examination_timing
 										from obs oss
-										where oss.concept_id = 3753 
+										where oss.concept_id IN (3753, 6515) 
 										and cast(oss.obs_datetime as date) <= cast('#endDate#' as date)
 										group by oss.person_id
 										)latest
@@ -245,7 +245,7 @@ FROM
 									from obs B
 									inner join 
 									(select person_id, max(obs_datetime), SUBSTRING(MAX(CONCAT(obs_datetime, obs_id)), 20) AS observation_id
-									from obs where concept_id = 3753
+									from obs where concept_id IN (3753, 6515)
 									and obs_datetime <= cast('#endDate#' as date)
 									and voided = 0
 									group by person_id) as A
@@ -315,7 +315,7 @@ FROM
 										select oss.person_id, MAX(oss.obs_datetime) as max_observation,
 										SUBSTRING(MAX(CONCAT(oss.obs_datetime, oss.value_coded)), 20) as examination_timing
 										from obs oss
-										where oss.concept_id = 3753 
+										where oss.concept_id IN (3753, 6515) 
 										and cast(oss.obs_datetime as date) <= cast('#endDate#' as date)
 										group by oss.person_id
 										)latest
@@ -358,7 +358,7 @@ FROM
 									from obs B
 									inner join 
 									(select person_id, max(obs_datetime), SUBSTRING(MAX(CONCAT(obs_datetime, obs_id)), 20) AS observation_id
-									from obs where concept_id = 3753
+									from obs where concept_id IN (3753, 6515)
 									and obs_datetime <= cast('#endDate#' as date)
 									and voided = 0
 									group by person_id) as A
@@ -442,7 +442,7 @@ FROM
 										select oss.person_id, MAX(oss.obs_datetime) as max_observation,
 										SUBSTRING(MAX(CONCAT(oss.obs_datetime, oss.value_coded)), 20) as examination_timing
 										from obs oss
-										where oss.concept_id = 3753 
+										where oss.concept_id IN (3753, 6515) 
 										and cast(oss.obs_datetime as date) <= cast('#endDate#' as date)
 										group by oss.person_id
 										)latest
@@ -671,7 +671,7 @@ AND Clients_Seen.Id not in (
 										select oss.person_id, MAX(oss.obs_datetime) as max_observation,
 										SUBSTRING(MAX(CONCAT(oss.obs_datetime, oss.value_coded)), 20) as examination_timing
 										from obs oss
-										where oss.concept_id = 3753 
+										where oss.concept_id IN (3753, 6515) 
 										and cast(oss.obs_datetime as date) <= cast('#endDate#' as date)
 										group by oss.person_id
 										)latest
@@ -716,7 +716,7 @@ FROM
 									from obs B
 									inner join 
 									(select person_id, max(obs_datetime), SUBSTRING(MAX(CONCAT(obs_datetime, obs_id)), 20) AS observation_id
-									from obs where concept_id = 3753
+									from obs where concept_id IN (3753, 6515)
 									and obs_datetime <= cast('#endDate#' as date)
 									and voided = 0
 									group by person_id) as A
@@ -786,7 +786,7 @@ FROM
 										select oss.person_id, MAX(oss.obs_datetime) as max_observation,
 										SUBSTRING(MAX(CONCAT(oss.obs_datetime, oss.value_coded)), 20) as examination_timing
 										from obs oss
-										where oss.concept_id = 3753 
+										where oss.concept_id IN (3753, 6515) 
 										and cast(oss.obs_datetime as date) <= cast('#endDate#' as date)
 										group by oss.person_id
 										)latest
@@ -830,7 +830,7 @@ FROM
 									from obs B
 									inner join 
 									(select person_id, max(obs_datetime), SUBSTRING(MAX(CONCAT(obs_datetime, obs_id)), 20) AS observation_id
-									from obs where concept_id = 3753
+									from obs where concept_id IN (3753, 6515)
 									and obs_datetime <= cast('#endDate#' as date)
 									and voided = 0
 									group by person_id) as A
@@ -914,7 +914,7 @@ FROM
 										select oss.person_id, MAX(oss.obs_datetime) as max_observation,
 										SUBSTRING(MAX(CONCAT(oss.obs_datetime, oss.value_coded)), 20) as examination_timing
 										from obs oss
-										where oss.concept_id = 3753 
+										where oss.concept_id IN (3753, 6515) 
 										and cast(oss.obs_datetime as date) <= cast('#endDate#' as date)
 										group by oss.person_id
 										)latest
