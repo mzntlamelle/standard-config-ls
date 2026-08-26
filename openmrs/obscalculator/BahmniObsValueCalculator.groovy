@@ -54,6 +54,7 @@ public class BahmniObsValueCalculator implements ObsValueCalculator {
 
     public void run(BahmniEncounterTransaction bahmniEncounterTransaction) {
         calculateAndAdd(bahmniEncounterTransaction);
+        createFollowUpAppointment(bahmniEncounterTransaction);
     }
 
     static def calculateAndAdd(BahmniEncounterTransaction bahmniEncounterTransaction) {
@@ -520,4 +521,215 @@ public class BahmniObsValueCalculator implements ObsValueCalculator {
             return result
         }
     }
+
+    // ─────────────────────────────────────────────────────────────────────────────
+    // eReg — Auto-create the ART follow-up appointment from the
+    //        "HIV Treatment and Care Progress Template" observations.
+    //
+    //   Trigger : "Appointment scheduled" == Yes  AND  "ART, Follow-up date" has a value.
+    //   Creates : an appointment for the SAME patient, at the SAME encounter location,
+    //             on the follow-up date, starting at APPOINTMENT_START_HOUR:00.
+    //   Skips   : if a non-cancelled appointment for that patient + service already
+    //             exists on that date (so re-saving the encounter is safe).
+    //
+    //   Field mapping (mirrors what the Appointments UI posts to
+    //   POST /openmrs/ws/rest/v1/appointment):
+    //       encounter patientUuid   -> appointment.patient
+    //       encounter locationUuid  -> appointment.location
+    //       "ART, Follow-up date"   -> appointment.startDateTime (at 08:00)
+    //                                  endDateTime = start + service-type duration
+    //       (constant)              -> appointment.service      = ART Clinic
+    //       (constant)              -> appointment.serviceType  = Refill
+    //       (constant)              -> appointmentKind = Scheduled, status = Scheduled
+    //
+    //   NOTE ON "visit type": an Appointment has no visitType field — visit type is set
+    //   on the VISIT when the patient is checked in, not on the appointment. The nearest
+    //   equivalent on an appointment is the service type; APPT_SERVICE_TYPE_NAME below is
+    //   set to "Refill", the ART Clinic service type closest to the "ARV Drug Pickup"
+    //   visit type. Change it to "Follow up" if you would rather the appointment read as
+    //   a clinical follow-up than as a drug pickup.
+    //
+    //   The appointments module is reached reflectively (Context.loadClass) on purpose:
+    //   if that module is ever absent or renamed, this method logs and returns instead of
+    //   failing to compile and taking BMI / adherence / the whole encounter save with it.
+    // ─────────────────────────────────────────────────────────────────────────────
+
+    static final String APPT_SERVICE_UUID       = "0c8dfd62-776a-4ddd-bcee-f2570c0721fa"  // ART Clinic
+    static final String APPT_SERVICE_TYPE_NAME  = "Refill"                                 // closest to "ARV Drug Pickup"
+    static final String FOLLOW_UP_DATE_CONCEPT  = "ART, Follow-up date"
+    static final String APPT_SCHEDULED_CONCEPT  = "Appointment scheduled"
+    static final String APPT_SCHEDULED_ANSWER   = "Yes"
+    static final int    APPOINTMENT_START_HOUR  = 8
+    static final int    DEFAULT_DURATION_MINS   = 30
+
+    static void createFollowUpAppointment(BahmniEncounterTransaction etx) {
+        try {
+            Collection<BahmniObservation> observations = etx.getObservations()
+            if (observations == null || observations.isEmpty()) return
+
+            BahmniObservation followUpObs  = find(FOLLOW_UP_DATE_CONCEPT, observations, null)
+            BahmniObservation scheduledObs = find(APPT_SCHEDULED_CONCEPT, observations, null)
+
+            // Not this form, or the clinician did not schedule anything -> nothing to do.
+            if (!hasValue(followUpObs) || followUpObs.voided) return
+            if (!hasValue(scheduledObs) || scheduledObs.voided) return
+            if (!APPT_SCHEDULED_ANSWER.equalsIgnoreCase(codedName(scheduledObs))) return
+
+            LocalDate followUpDate = toLocalDate(followUpObs.getValue())
+            if (followUpDate == null) return
+
+            def appointmentsService = openmrsService("org.openmrs.module.appointments.service.AppointmentsService")
+            if (appointmentsService == null) {
+                log("appointments module not available - no appointment created")
+                return
+            }
+
+            def serviceDefinitionService = openmrsService("org.openmrs.module.appointments.service.AppointmentServiceDefinitionService")
+            if (serviceDefinitionService == null) {
+                // older appointments modules
+                serviceDefinitionService = openmrsService("org.openmrs.module.appointments.service.AppointmentServiceService")
+            }
+            if (serviceDefinitionService == null) {
+                log("appointment service definition service not available - no appointment created")
+                return
+            }
+
+            def appointmentService = serviceDefinitionService.getAppointmentServiceByUuid(APPT_SERVICE_UUID)
+            if (appointmentService == null) {
+                log("appointment service not found by uuid " + APPT_SERVICE_UUID + " - no appointment created")
+                return
+            }
+
+            def serviceType = findServiceType(appointmentService, APPT_SERVICE_TYPE_NAME)
+            Integer durationMins = durationOf(serviceType, appointmentService)
+
+            // Follow-up date at APPOINTMENT_START_HOUR:00 in the server's timezone.
+            Calendar cal = Calendar.getInstance()
+            cal.clear()
+            cal.set(followUpDate.getYear(), followUpDate.getMonthOfYear() - 1, followUpDate.getDayOfMonth(),
+                    APPOINTMENT_START_HOUR, 0, 0)
+            Date startDateTime = cal.getTime()
+            cal.add(Calendar.MINUTE, durationMins)
+            Date endDateTime = cal.getTime()
+
+            Patient patient = Context.getPatientService().getPatientByUuid(etx.getPatientUuid())
+            if (patient == null) {
+                log("patient not found by uuid " + etx.getPatientUuid() + " - no appointment created")
+                return
+            }
+
+            def location = etx.getLocationUuid() != null ?
+                    Context.getLocationService().getLocationByUuid(etx.getLocationUuid()) : null
+
+            if (hasExistingAppointment(appointmentsService, patient, startDateTime)) {
+                log("appointment already exists for " + patient.getUuid() + " on " + followUpDate + " - skipping")
+                return
+            }
+
+            def appointment = Context.loadClass("org.openmrs.module.appointments.model.Appointment").newInstance()
+            appointment.setPatient(patient)
+            appointment.setService(appointmentService)
+            if (serviceType != null) appointment.setServiceType(serviceType)
+            if (location != null) appointment.setLocation(location)
+            appointment.setStartDateTime(startDateTime)
+            appointment.setEndDateTime(endDateTime)
+            appointment.setAppointmentKind(enumValue("org.openmrs.module.appointments.model.AppointmentKind", "Scheduled"))
+            appointment.setStatus(enumValue("org.openmrs.module.appointments.model.AppointmentStatus", "Scheduled"))
+            appointment.setComments("Auto-created from HIV Treatment and Care - Follow Up")
+
+            saveAppointment(appointmentsService, appointment)
+            log("created appointment for " + patient.getUuid() + " on " + startDateTime)
+        } catch (Exception e) {
+            // Never let appointment creation block a clinical save.
+            log("failed to create follow-up appointment: " + e)
+            e.printStackTrace()
+        }
+    }
+
+    // Is there already a live appointment for this patient + service on that day?
+    private static boolean hasExistingAppointment(def appointmentsService, Patient patient, Date onDate) {
+        def sameDay = null
+        try {
+            sameDay = appointmentsService.getAllAppointments(onDate)
+        } catch (Exception e) {
+            log("could not read existing appointments (" + e + ") - continuing")
+            return false
+        }
+        if (sameDay == null) return false
+        return sameDay.any { appt ->
+            appt.getPatient() != null &&
+            patient.getUuid().equals(appt.getPatient().getUuid()) &&
+            appt.getService() != null &&
+            APPT_SERVICE_UUID.equals(appt.getService().getUuid()) &&
+            !"Cancelled".equalsIgnoreCase(String.valueOf(appt.getStatus())) &&
+            !Boolean.TRUE.equals(appt.getVoided())
+        }
+    }
+
+    private static void saveAppointment(def appointmentsService, def appointment) {
+        try {
+            appointmentsService.validateAndSave(appointment)   // current appointments module
+        } catch (MissingMethodException ignored) {
+            appointmentsService.save(appointment)              // older appointments module
+        }
+    }
+
+    private static def findServiceType(def appointmentService, String typeName) {
+        if (typeName == null) return null
+        def types = null
+        try {
+            types = appointmentService.getServiceTypes(false)
+        } catch (MissingMethodException ignored) {
+            try { types = appointmentService.getServiceTypes() } catch (Exception e) { return null }
+        } catch (Exception e) {
+            return null
+        }
+        if (types == null) return null
+        return types.find { t -> typeName.equalsIgnoreCase(String.valueOf(t.getName())) }
+    }
+
+    private static Integer durationOf(def serviceType, def appointmentService) {
+        try {
+            if (serviceType != null && serviceType.getDuration() != null) return serviceType.getDuration() as Integer
+        } catch (Exception ignored) { }
+        try {
+            if (appointmentService.getDurationMins() != null) return appointmentService.getDurationMins() as Integer
+        } catch (Exception ignored) { }
+        return DEFAULT_DURATION_MINS
+    }
+
+    // Resolve an OpenMRS module service without a compile-time dependency on the module.
+    private static Object openmrsService(String className) {
+        try {
+            return Context.getService(Context.loadClass(className))
+        } catch (Exception ignored) {
+            return null
+        }
+    }
+
+    private static Object enumValue(String enumClassName, String constantName) {
+        return Enum.valueOf(Context.loadClass(enumClassName), constantName)
+    }
+
+    // Coded obs values arrive as a {uuid, name} Map (see codedValue above), but can also be a
+    // plain String or an EncounterTransaction.Concept depending on how the obs was built.
+    private static String codedName(BahmniObservation observation) {
+        return displayName(observation == null ? null : observation.getValue())
+    }
+
+    private static String displayName(Object value) {
+        if (value == null) return null
+        if (value instanceof CharSequence) return value.toString()
+        if (value instanceof Map) return displayName(((Map) value).get("name"))
+        def name = null
+        try { name = value.getName() } catch (Exception ignored) { return value.toString() }
+        if (name == null) return value.toString()
+        if (name instanceof CharSequence) return name.toString()
+        return displayName(name)
+    }
+
+    private static void log(String message) {
+        System.out.println("eReg — follow-up appointment: " + message)
+    }
+
 }

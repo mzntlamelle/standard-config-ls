@@ -24,7 +24,7 @@
             },
             "forms-v2-react": {
                 "type": "formsV2React",
-                "displayOrder": 17,
+                "displayOrder": 19,
                 "dashboardConfig": {
                     "title": null,
                     "maximumNoOfVisits": 10,
@@ -43,7 +43,7 @@
             "navigationLinksControl": {
                 "translationKey": "DASHBOARD_TITLE_NAVIGATION_LINKS_CONTROL_KEY",
                 "type": "navigationLinksControl",
-                "displayOrder": 2,
+                "displayOrder": 3,
                 "showLinks": [
                     "home",
                     "visit",
@@ -59,12 +59,12 @@
                 "showDetailsButton": true,
                 "type": "disposition",
                 "numberOfVisits": 1,
-                "displayOrder": 16
+                "displayOrder": 18
             },
             "treatments": {
                 "translationKey": "DASHBOARD_TITLE_TREATMENTS_KEY",
                 "type": "treatment",
-                "displayOrder": 4,
+                "displayOrder": 5,
                 "dashboardConfig": {
                     "showFlowSheet": true,
                     "showListView": true,
@@ -91,6 +91,7 @@
                 }
             },
             "labOrdersControl": {
+                "displayOrder": 9,
                 "orderType": "Lab Order",
                 "type": "ordersControl",
                 "title": "Lab Orders",
@@ -137,18 +138,18 @@
                 "translationKey": "DASHBOARD_TITLE_RADIOLOGY_KEY",
                 "type": "radiology",
                 "showDetailsButton": true,
-                "displayOrder": 6
+                "displayOrder": 7
             },
             "programs": {
                 "translationKey": "DASHBOARD_TITLE_PROGRAMS_KEY",
                 "type": "programs",
-                "displayOrder": 13
+                "displayOrder": 15
             },
             "radiologyOrders": {
                 "orderType": "Radiology Order",
                 "type": "ordersControl",
                 "translationKey": "DASHBOARD_TITLE_RADIOLOGY_ORDERS_KEY",
-                "displayOrder": 14,
+                "displayOrder": 16,
                 "dashboardConfig": {
                     "conceptNames": [
                         "Summary"
@@ -160,7 +161,7 @@
                 "orderType": "Radiology Order",
                 "type": "pacsOrders",
                 "translationKey": "DASHBOARD_TITLE_PACS_KEY",
-                "displayOrder": 11,
+                "displayOrder": 13,
                 "dashboardConfig": {
                     "pacsImageUrl": "/oviyam2/oviyam?patientID={{patientID}}&accessionNumber={{orderNumber}}",
                     "numberOfVisits": 4
@@ -171,7 +172,7 @@
                 "type": "ordersControl",
                 "orderType": "Lab Order",
                 "showDetailsButton": true,
-                "displayOrder": 8,
+                "displayOrder": 10,
                 "dashboardConfig": {
                     "conceptNames": []
                 },
@@ -183,7 +184,7 @@
             "bacteriologyResults": {
                 "translationKey": "DASHBOARD_TITLE_BACTERIOLOGY_RESULTS_KEY",
                 "type": "bacteriologyResultsControl",
-                "displayOrder": 20,
+                "displayOrder": 22,
                 "scope": "All",
                 "orderType": "",
                 "dashboardConfig": {
@@ -195,7 +196,7 @@
             "labResults": {
                 "translationKey": "DASHBOARD_TITLE_LAB_RESULTS_KEY",
                 "type": "labOrders",
-                "displayOrder": 5,
+                "displayOrder": 6,
                 "dashboardConfig": {
                     "title": null,
                     "numberOfVisits": 6,
@@ -224,7 +225,7 @@
                 "translationKey": "DASHBOARD_TITLE_BASIC_DETAILS_KEY",
                 "type": "observation",
                 "isObservation": true,
-                "displayOrder": 9,
+                "displayOrder": 11,
                 "dashboardConfig": {
                     "conceptNames": [
                         "Height (cm)",
@@ -241,7 +242,7 @@
                         "Height (cm)",
                         "Weight (kg)",
                         "Body mass index",
-                        "BMI STATUS"
+                        "BMI Status"
                     ],
                     "numberOfVisits": 2,
                     "scope": "latest",
@@ -254,7 +255,7 @@
             "flowsheet": {
                 "type": "flowSheet",
                 "title": "Vitals Flow Sheet",
-                "displayOrder": 12,
+                "displayOrder": 14,
                 "dashboardConfig": {
                     "latestCount": "5",
                     "groupBy": "obstime",
@@ -286,7 +287,7 @@
                 "translationKey": "DASHBOARD_TITLE_HISTORY_AND_EXAMINATIONS_KEY",
                 "type": "vitals",
                 "isObservation": true,
-                "displayOrder": 10,
+                "displayOrder": 12,
                 "dashboardConfig": {
                     "showDetailsButton": true,
                     "conceptNames": [
@@ -314,7 +315,7 @@
             "visits": {
                 "translationKey": "DASHBOARD_TITLE_VISITS_KEY",
                 "type": "visits",
-                "displayOrder": 7,
+                "displayOrder": 8,
                 "dashboardConfig": {
                     "title": null,
                     "maximumNoOfVisits": 8,
@@ -324,17 +325,17 @@
             "admissionDetails": {
                 "translationKey": "DASHBOARD_TITLE_ADMISSION_DETAILS_KEY",
                 "type": "admissionDetails",
-                "displayOrder": 18,
+                "displayOrder": 20,
                 "showDetailsButton": true
             },
             "conditions": {
                 "translationKey": "CONDITION_LIST_DISPLAY_CONTROL_TITLE",
                 "type": "conditionsList",
-                "displayOrder": 3
+                "displayOrder": 4
             },
             "formsDisplay": {
                 "type": "forms",
-                "displayOrder": 15,
+                "displayOrder": 17,
                 "dashboardConfig": {
                     "title": null,
                     "showTable": true,
@@ -349,7 +350,7 @@
             },
             "patientAppointments": {
                 "type": "custom",
-                "displayOrder": 19,
+                "displayOrder": 21,
                 "config": {
                     "title": "DASHBOARD_TITLE_APPOINTMENTS_KEY",
                     "template": "<patient-appointments-dashboard section='config' patient='patient'></patient-appointments-dashboard>"
@@ -360,7 +361,7 @@
                 "type": "ordersControl",
                 "orderType": "Procedure Order",
                 "showDetailsButton": true,
-                "displayOrder": 21,
+                "displayOrder": 23,
                 "dashboardConfig": {
                     "conceptNames": []
                 },
@@ -370,6 +371,7 @@
                 }
             },
             "Form 2 Obs To Obs": {
+                "displayOrder": 24,
                 "displayType": "Half-Page",
                 "translationKey": "DASHBOARD_TITLE_FORMS2_OBS_TO_OBS_DISPLAY_CONTROL_KEY",
                 "type": "obsToObsFlowSheet",
@@ -486,6 +488,7 @@
         "maxRecentlyViewedPatients": 10,
         "sections": {
             "Bacteriology Concept Set": {
+                "displayOrder": 0,
                 "displayType": "Full-Page",
                 "translationKey": "DASHBOARD_TITLE_BACTERIOLOGY_RESULTS_KEY",
                 "type": "obsToObsFlowSheet",
@@ -550,6 +553,7 @@
                 }
             },
             "Chronic Treatment Chart": {
+                "displayOrder": 27,
                 "displayType": "Full-Page",
                 "title": "Chronic Treatment Chart",
                 "type": "chronicTreatmentChart",
