@@ -857,9 +857,9 @@
     }
   },
   "bonolo_meds_prescription_report": {
-    "name": "ART-096 | Bonolo Health Prescriptions (List)",
+    "name": "ART-096 Bonolo Health Prescriptions (List)",
     "type": "MRSGeneric",
-    "requiredPrivilege":"app:reports",
+    "requiredPrivilege": "app:reports",
     "config": {
       "sqlPath": "/etc/bahmni_config/openmrs/apps/reports/sql/bonolo_meds_prescriptions_list.sql/"
     }
